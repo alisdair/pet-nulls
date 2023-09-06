@@ -9,10 +9,12 @@ terraform {
 
 variable "pet" {
   type = string
+  default = "unsupported-llama"
 }
 
 variable "instances" {
   type = number
+  default = 5
 }
 
 resource "null_resource" "this" {

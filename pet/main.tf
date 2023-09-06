@@ -1,14 +1,15 @@
 terraform {
   required_providers {
     random = {
-      source = "hashicorp/random"
+      source  = "hashicorp/random"
       version = "3.3.2"
     }
   }
 }
 
 variable "prefix" {
-  type = string
+  type    = string
+  default = "whoops"
 }
 
 resource "random_pet" "this" {
