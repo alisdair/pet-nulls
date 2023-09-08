@@ -9,7 +9,7 @@ required_providers {
     version = "~> 3.3"
   }
 
-  external {
+  external = {
     source  = "hashicorp/external"
     version = "~> 2.3"
   }
