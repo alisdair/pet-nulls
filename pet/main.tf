@@ -7,12 +7,17 @@ terraform {
   }
 }
 
+module "uuid" {
+  source  = "Invicton-Labs/uuid/random"
+  version = "0.2.0"
+}
+
 variable "prefix" {
   type = string
 }
 
 resource "random_pet" "this" {
-  prefix = var.prefix
+  prefix = "${module.uuid.uuid}-${var.prefix}"
   length = 3
 }
 

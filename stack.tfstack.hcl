@@ -22,15 +22,10 @@ provider "null" "main" {}
 
 provider "random" "main" {}
 
-component "uuid" {
-  source = "Invicton-Labs/uuid/random"
-  version = "0.2.0"
-}
-
 component "pet" {
   source = "./pet"
   inputs = {
-    prefix = "${component.uuid.uuid}-${var.prefix}"
+    prefix = var.prefix
   }
   providers = {
     random = provider.random.main
