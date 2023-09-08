@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     null = {
-      source = "hashicorp/null"
+      source  = "hashicorp/null"
       version = "3.1.1"
     }
   }
@@ -9,12 +9,10 @@ terraform {
 
 variable "pet" {
   type = string
-  default = "unsupported-llama"
 }
 
 variable "instances" {
   type = number
-  default = 5
 }
 
 resource "null_resource" "this" {
@@ -26,5 +24,5 @@ resource "null_resource" "this" {
 }
 
 output "ids" {
-  value = [for n in null_resource.this: n.id]
+  value = [for n in null_resource.this : n.id]
 }

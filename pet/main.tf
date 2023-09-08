@@ -8,8 +8,7 @@ terraform {
 }
 
 variable "prefix" {
-  type    = string
-  default = "whoops"
+  type = string
 }
 
 resource "random_pet" "this" {
