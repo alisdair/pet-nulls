@@ -8,6 +8,11 @@ required_providers {
     source  = "hashicorp/random"
     version = "~> 3.3"
   }
+
+  external {
+    source  = "hashicorp/external"
+    version = "~> 2.3"
+  }
 }
 
 variable "prefix" {
@@ -22,13 +27,16 @@ provider "null" "main" {}
 
 provider "random" "main" {}
 
+provider "external" "main" {}
+
 component "pet" {
   source = "./pet"
   inputs = {
     prefix = var.prefix
   }
   providers = {
-    random = provider.random.main
+    random   = provider.random.main
+    external = provider.external.main
   }
 }
 
