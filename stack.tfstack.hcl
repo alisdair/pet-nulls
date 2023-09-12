@@ -52,6 +52,26 @@ component "third_pet" {
   }
 }
 
+component "pet_pet" {
+  source = "./pet"
+  inputs = {
+    prefix = component.third_pet.name
+  }
+  providers = {
+    random   = provider.random.main
+  }
+}
+
+component "pet_pet_pet" {
+  source = "./pet"
+  inputs = {
+    prefix = component.pet_pet.name
+  }
+  providers = {
+    random   = provider.random.main
+  }
+}
+
 component "nulls" {
   source = "./nulls"
   inputs = {
@@ -67,6 +87,17 @@ component "more_nulls" {
   source = "./nulls"
   inputs = {
     pet       = component.another_pet.name
+    instances = var.instances
+  }
+  providers = {
+    null = provider.null.main
+  }
+}
+
+component "double_pet_nulls" {
+  source = "./nulls"
+  inputs = {
+    pet       = component.pet_pet.name
     instances = var.instances
   }
   providers = {
