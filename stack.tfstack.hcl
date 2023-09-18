@@ -29,6 +29,8 @@ provider "null" "main" {}
 
 provider "random" "main" {}
 
+provider "terraform" "main" {}
+
 component "pet" {
   source = "./pet"
   inputs = {
@@ -63,5 +65,6 @@ component "slow" {
   providers = {
     http = provider.http.main
     random = provider.random.main
+    terraform = provider.terraform.main
   }
 }
