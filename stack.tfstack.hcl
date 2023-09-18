@@ -40,7 +40,7 @@ component "pet" {
 }
 
 component "nulls" {
-  for_each = [for x in range(var.instances): tostring(x)]
+  for_each = toset([for x in range(var.instances): tostring(x)])
 
   source = "./nulls"
   inputs = {
@@ -53,7 +53,7 @@ component "nulls" {
 }
 
 component "slow" {
-  for_each = [for x in range(2 * var.instances): tostring(x)]
+  for_each = toset([for x in range(2 * var.instances): tostring(x)])
 
   source = "./slow"
   inputs = {
