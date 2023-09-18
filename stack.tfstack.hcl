@@ -59,8 +59,6 @@ component "nulls" {
 }
 
 component "slow" {
-  for_each = toset([for x in range(2 * var.instances): tostring(x)])
-
   source = "./slow"
   inputs = {
     duration = 10
