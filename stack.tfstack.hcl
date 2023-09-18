@@ -1,4 +1,9 @@
 required_providers {
+  http = {
+    source = "hashicorp/http"
+    version = "3.4.0"
+  }
+
   null = {
     source  = "hashicorp/null"
     version = "~> 3.1"
@@ -18,6 +23,8 @@ variable "instances" {
   type = number
 }
 
+provider "http" "main" {}
+
 provider "null" "main" {}
 
 provider "random" "main" {}
@@ -33,6 +40,8 @@ component "pet" {
 }
 
 component "nulls" {
+  for_each = range(var.instances)
+
   source = "./nulls"
   inputs = {
     pet       = component.pet.name
@@ -40,5 +49,19 @@ component "nulls" {
   }
   providers = {
     null = provider.null.main
+  }
+}
+
+component "slow" {
+  for_each = range(2 * var.instances)
+
+  source = "./slow"
+  inputs = {
+    duration = 10
+    multiple = 2
+  }
+  providers = {
+    http = provider.http.main
+    random = provider.random.main
   }
 }
