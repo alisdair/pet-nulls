@@ -13,6 +13,10 @@ required_providers {
     source  = "hashicorp/random"
     version = "~> 3.3"
   }
+
+  terraform = {
+    source = "terraform.io/builtin/terraform"
+  }
 }
 
 variable "prefix" {
