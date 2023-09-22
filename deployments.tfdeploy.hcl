@@ -8,6 +8,6 @@
 deployment "complex" {
   variables = {
     prefix    = "complex"
-    instances = 3
+    instances = 0
   }
 }
