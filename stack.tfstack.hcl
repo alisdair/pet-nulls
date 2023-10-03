@@ -44,16 +44,3 @@ component "pet" {
     random   = provider.random.main
   }
 }
-
-component "nulls" {
-  for_each = toset([for x in range(var.instances): tostring(x)])
-
-  source = "./nulls"
-  inputs = {
-    pet       = component.pet.name
-    instances = var.instances
-  }
-  providers = {
-    null = provider.null.main
-  }
-}
