@@ -1,6 +1,6 @@
 deployment "complex" {
   variables = {
     prefix    = "chicken"
-    instances = 10
+    instances = 5
   }
 }
