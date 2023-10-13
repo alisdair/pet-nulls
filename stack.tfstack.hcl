@@ -55,3 +55,16 @@ component "nulls" {
     null = provider.null.main
   }
 }
+
+component "slow" {
+  source = "./slow"
+  inputs = {
+    duration = 10
+    multiple = 3
+  }
+  providers = {
+    http      = provider.http.main
+    random    = provider.random.main
+    terraform = provider.terraform.main
+  }
+}
