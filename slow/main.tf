@@ -67,6 +67,9 @@ resource "terraform_data" "third" {
   }
 }
 
-resource "random_pet" "pet" {
-  length = local.third
+removed {
+  from = random_pet.pet
+
+  # Is this provider argument necessary?
+  provider = random
 }
