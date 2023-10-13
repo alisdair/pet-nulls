@@ -56,7 +56,9 @@ component "nulls" {
   }
 }
 
-component "slow" {
+removed {
+  from = component.slow
+
   source = "./slow"
   inputs = {
     duration = 10
