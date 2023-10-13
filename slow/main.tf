@@ -66,7 +66,3 @@ resource "terraform_data" "third" {
     duration = jsondecode(data.http.third.response_body).args.duration
   }
 }
-
-resource "random_pet" "pet" {
-  length = local.third
-}

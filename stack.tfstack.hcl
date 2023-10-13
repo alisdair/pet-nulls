@@ -68,3 +68,11 @@ component "slow" {
     terraform = provider.terraform.main
   }
 }
+
+removed {
+  from = component.slow.random_pet.pet
+
+  # Is this the correct syntax for specifying the provider for a removed
+  # resource, or should it be just `random.main`?
+  provider = provider.random.main
+}
